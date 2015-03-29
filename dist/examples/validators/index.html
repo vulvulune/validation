@@ -1,0 +1,14 @@
+<template>
+  <markdown>
+    ### notEmpty()
+    This is a special case, dictating that the field is 'required' and cannot be empty.
+    Empty means null, undefined, '', or if it has a length property (arrays and strings) that the length is 0.
+
+    >Strings are always trimmed before they evaluated.
+
+
+    >The notEmpty rule is always checked first before any other validation rule.  This means that without the notEmpty rule, the .betweenLength(3,30) rule would still consider a value of '' as valid because the field is allowed to be empty.
+  </markdown>
+
+  <smart-example base="validators/notEmpty" ></smart-example>
+</template>
