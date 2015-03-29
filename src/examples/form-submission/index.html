@@ -1,0 +1,17 @@
+<template>
+  <smart-example base="form-submission/disabled-bind" title="Binding disabled" >
+    <markdown>
+      To prevent form submission when the validation fails, you `could` bind the disabled attribute of the button to the validation's result.
+      Because visual clues are only provided once a field is 'dirty', this could lead to a weird user experience.
+      Without changing the first-name, the user does not know why this submit button is disabled.
+    </markdown>
+  </smart-example>
+
+  <smart-example base="form-submission/check-all" title="Calling checkAll()" >
+    <markdown>
+      In contrast, this example always has the submit button enabled.
+      When you execute it, however, the code first calls the validation's *checkAll()* function.
+      This ensures the complete validation is re-ran with latest values, as well as forcing all fields to be considered 'dirty', leading to a better user experience.
+    </markdown>
+  </smart-example>
+</template>

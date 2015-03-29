@@ -1,0 +1,8 @@
+<template>
+  <form role="form" validate.bind="validation">
+    <div class="form-group">
+      <label>passes((newValue) => { return /^\d{3}-\d{2}-\d{4}$/.test(newValue); }).withMessage("Not a valid SSN")</label>
+      <input type="text" value.bind="passesProperty" class="form-control" >
+    </div>
+  </form>
+</template>

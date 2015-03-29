@@ -1,14 +1,24 @@
 <template>
-  <markdown>
-    ### notEmpty()
-    This is a special case, dictating that the field is 'required' and cannot be empty.
-    Empty means null, undefined, '', or if it has a length property (arrays and strings) that the length is 0.
+  <smart-example base="validators/notEmpty" title="notEmpty" >
+    The notEmpty rule is always checked first before any other validation rule.  This means that without the notEmpty rule, the .betweenLength(3,30) rule would still consider a value of '' as valid because the field is allowed to be empty.
+  </smart-example>
 
-    >Strings are always trimmed before they evaluated.
-
-
-    >The notEmpty rule is always checked first before any other validation rule.  This means that without the notEmpty rule, the .betweenLength(3,30) rule would still consider a value of '' as valid because the field is allowed to be empty.
-  </markdown>
-
-  <smart-example base="validators/notEmpty" ></smart-example>
+  <smart-example base="validators/between" title="between(minimumValue, maximumValue)" ></smart-example>
+  <smart-example base="validators/betweenLength" title="betweenLength(minimumLength, maximumLength)" ></smart-example>
+  <smart-example base="validators/email" title="email()" ></smart-example>
+  <smart-example base="validators/equals" title="equals(otherValue, otherValueLabel)" ></smart-example>
+  <smart-example base="validators/in" title="in(collection)" ></smart-example>
+  <smart-example base="validators/isAlphanumeric" title="isAlphanumeric()" ></smart-example>
+  <smart-example base="validators/isAlphanumericOrWhitespace" title="isAlphanumericOrWhitespace()" ></smart-example>
+  <smart-example base="validators/isDigit" title="isDigit()" ></smart-example>
+  <smart-example base="validators/isNumeric" title="isNumeric()" ></smart-example>
+  <smart-example base="validators/isStrongPassword" title="isStrongPassword(minimumComplexityLevel)" ></smart-example>
+  <smart-example base="validators/matches" title="matches(regex)" ></smart-example>
+  <smart-example base="validators/matchesRegex" title="matchesRegex(regexString)" ></smart-example>
+  <smart-example base="validators/maximum" title="maximum(maximumValue)" ></smart-example>
+  <smart-example base="validators/maxLength" title="maxLength(maximumLength)" ></smart-example>
+  <smart-example base="validators/minimum" title="minimum(minimumValue)" ></smart-example>
+  <smart-example base="validators/minLength" title="minLength(minimumLength)" ></smart-example>
+  <smart-example base="validators/notEquals" title="notEquals(otherValue, otherValueLabel)" ></smart-example>
+  <smart-example base="validators/passes" title="passes(customFunction, threshold)" ></smart-example>
 </template>

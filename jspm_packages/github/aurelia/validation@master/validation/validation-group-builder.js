@@ -31,7 +31,7 @@ System.register(["../validation/validation-rules", "../validation/validation-rul
             value: function ensure(propertyName) {
               var newValidationProperty = null;
               this.validationRuleCollections = [];
-              for (var i = 0; i < this.validationGroup.validationProperties; i++) {
+              for (var i = 0; i < this.validationGroup.validationProperties.length; i++) {
                 if (this.validationGroup.validationProperties[i].propertyName === propertyName) {
                   newValidationProperty = this.validationGroup.validationProperties[i];
                   break;
@@ -147,6 +147,20 @@ System.register(["../validation/validation-rules", "../validation/validation-rul
             value: function passesRule(validationRule) {
 
               this.validationRuleCollections[0].addValidationRule(validationRule);
+              this.checkLast();
+              return this.validationGroup;
+            }
+          },
+          checkLast: {
+            value: function checkLast() {
+              var validationProperty = this.validationGroup.validationProperties[this.validationGroup.validationProperties.length - 1];
+              validationProperty.validateCurrentValue(false);
+            }
+          },
+          withMessage: {
+            value: function withMessage(message) {
+              this.validationRuleCollections[0].withMessage(message);
+              this.checkLast();
               return this.validationGroup;
             }
           },
@@ -172,6 +186,7 @@ System.register(["../validation/validation-rules", "../validation/validation-rul
             value: function endIf() {
               if (!this.validationRuleCollections[0]["default"]) throw "Invalid statement: 'endIf'";
               this.validationRuleCollections.shift(); //go up one level in the nested collections
+              this.checkLast();
               return this.validationGroup;
             }
           },
@@ -212,6 +227,7 @@ System.register(["../validation/validation-rules", "../validation/validation-rul
             value: function endSwitch() {
               if (!this.validationRuleCollections[0]["default"]) throw "Invalid statement: 'endIf'";
               this.validationRuleCollections.shift(); //go up one level in the nested collections
+              this.checkLast();
               return this.validationGroup;
             }
           }

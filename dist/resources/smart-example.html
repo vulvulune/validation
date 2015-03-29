@@ -1,6 +1,17 @@
 <template>
   <div class="panel panel-default">
+    <div class="panel-heading" >
+        <h2 class="panel-title" >${title}</h2>
+    </div>
     <div class="panel-body">
+      <content></content>
+      <div class="row" if.bind="result">
+        <div class="col-md-12">
+          <div class="well">
+            <compose view-model="../${model.moduleId}" view="../${view.moduleId}.html"></compose>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <column>
           <file src="view-model.js" model="true"></file>
@@ -8,14 +19,6 @@
         <column>
           <file src="view.html" view="true"></file>
         </column>
-      </div>
-      <div class="row" if.bind="result">
-        <div class="col-md-12">
-          <strong>result:</strong>
-          <div class="well">
-            <compose view-model="../${model.moduleId}" view="../${view.moduleId}.html"></compose>
-          </div>
-        </div>
       </div>
     </div>
   </div>
