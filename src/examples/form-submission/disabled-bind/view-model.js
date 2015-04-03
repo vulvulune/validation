@@ -7,12 +7,8 @@ export class Person {
       .ensure('firstName')
         .notEmpty()
         .betweenLength(5,10);
-
-    debugger;
-    var isValid = this.validation.result.isValid;
-    debugger;
   }
   welcome(){
-      alert(`Welcome ${firstName}`);
+      alert(`Welcome ${this.firstName}`);
   }
 }

@@ -7,11 +7,12 @@
     </markdown>
   </smart-example>
 
-  <smart-example base="form-submission/check-all" title="Calling checkAll()" >
+  <smart-example base="form-submission/validate" title="Calling validate()" >
     <markdown>
       In contrast, this example always has the submit button enabled.
-      When you execute it, however, the code first calls the validation's *checkAll()* function.
+      When you execute it, however, the code first calls the validation's *validate()* function.
       This ensures the complete validation is re-ran with latest values, as well as forcing all fields to be considered 'dirty', leading to a better user experience.
+      The *validate()* function returns a promise that will resolve or reject depending on whether the validation is valid or invalid.
     </markdown>
   </smart-example>
 </template>

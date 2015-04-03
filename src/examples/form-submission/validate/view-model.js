@@ -9,7 +9,10 @@ export class Person {
         .betweenLength(5,10);
   }
   welcome(){
-    if(this.validation.checkAll())
-      alert(`Welcome ${firstName}`);
+    this.validation.validate().then(
+      () => {
+        alert(`Welcome ${this.firstName}`);
+      }
+    );
   }
 }

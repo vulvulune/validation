@@ -26,7 +26,10 @@ export class Person {
   }
 
   welcome(){
-    if(this.validation.checkAll())
-      alert('Welcome,new customer!');
+    this.validation.validate().then(
+      () => {
+        alert('Welcome,new customer!');
+      }
+    );
   }
 }
