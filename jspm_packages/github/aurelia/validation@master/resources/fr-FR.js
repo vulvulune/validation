@@ -1,69 +1,99 @@
 /* */ 
-System.register([], function (_export) {
-  var data;
+System.register(['../validation/utilities'], function (_export) {
+  var Utilities, data;
   return {
-    setters: [],
+    setters: [function (_validationUtilities) {
+      Utilities = _validationUtilities.Utilities;
+    }],
     execute: function () {
-      "use strict";
+      'use strict';
 
       data = {
         settings: {
-          numericRegex: /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/
+          numericRegex: /^-?(?:\d+)(?:\,\d+)?$/
         },
         messages: {
-          isRequired: "est obligatoire",
-          AlphaNumericOrWhitespaceValidationRule: function (newValue, threshold) {
-            return "ne peut contenir que des caractères de type numérique ou alphabétique ou avec des espaces";
+          isRequired: 'est obligatoire',
+          onValidateCallback: 'n\'est pas une valeur valide',
+          AlphaNumericOrWhitespaceValidationRule: function AlphaNumericOrWhitespaceValidationRule(newValue, threshold) {
+            return 'ne peut contenir que des caractères alphanumériques ou des espaces';
           },
-          AlphaNumericValidationRule: function (newValue, threshold) {
-            return "ne peut contenir que des caractères de type numérique ou alphabétique";
+          AlphaNumericValidationRule: function AlphaNumericValidationRule(newValue, threshold) {
+            return 'ne peut contenir que des caractères alphanumériques';
           },
-          BetweenLengthValidationRule: function (newValue, threshold) {
-            return "doit être compris entre between " + threshold.minimumLength + " et " + threshold.maximumLength + " caratères";
+          AlphaValidationRule: function AlphaValidationRule(newValue, threshold) {
+            return 'ne peut contenir que des lettres';
           },
-          BetweenValueValidationRule: function (newValue, threshold) {
-            return "doit être entre " + threshold.minimumValue + " et " + threshold.maximumValue;
+          AlphaOrWhitespaceValidationRule: function AlphaOrWhitespaceValidationRule(newValue, threshold) {
+            return 'ne peut contenir que des lettres ou des espaces';
           },
-          CustomFunctionValidationRule: function (newValue, threshold) {
-            return "n'est pas une valeur valide";
+          BetweenLengthValidationRule: function BetweenLengthValidationRule(newValue, threshold) {
+            return 'doit contenir de ' + Utilities.getValue(threshold.minimumLength) + ' à ' + Utilities.getValue(threshold.maximumLength) + ' caractères';
           },
-          DigitValidationRule: function (newValue, threshold) {
-            return "doit contenir uniquement des valeurs nurmérique";
+          BetweenValueValidationRule: function BetweenValueValidationRule(newValue, threshold) {
+            return 'doit être entre ' + Utilities.getValue(threshold.minimumValue) + ' et ' + Utilities.getValue(threshold.maximumValue);
           },
-          EmailValidationRule: function (newValue, threshold) {
-            return "n'est pas une email valide";
+          CustomFunctionValidationRule: function CustomFunctionValidationRule(newValue, threshold) {
+            return 'n\'est pas une valeur valide';
           },
-          EqualityValidationRule: function (newValue, threshold) {
-            if (threshold.otherValueLabel) if (threshold.equality) return "ne correspond pas " + threshold.otherValueLabel;else return "ne peut pas correspondre " + threshold.otherValueLabel;else if (threshold.equality) return "devrait être " + threshold.otherValue;else return "ne peut être " + threshold.otherValue;
+          DigitValidationRule: function DigitValidationRule(newValue, threshold) {
+            return 'doit contenir uniquement des caractères numériques';
           },
-          InCollectionValidationRule: function (newValue, threshold) {
-            return "n'est pas une valeur valide";
+          EmailValidationRule: function EmailValidationRule(newValue, threshold) {
+            return 'n\'est pas une adresse email valide';
           },
-          MinimumLengthValidationRule: function (newValue, threshold) {
-            return "doit avoir au moins " + threshold + " caratères";
+          EqualityValidationRule: function EqualityValidationRule(newValue, threshold) {
+            return 'doit être ' + Utilities.getValue(threshold.otherValue);
           },
-          MinimumValueValidationRule: function (newValue, threshold) {
-            return "doit être " + threshold + " ou plus";
+          InEqualityValidationRule: function InEqualityValidationRule(newValue, threshold) {
+            return 'ne peut pas être ' + Utilities.getValue(threshold.otherValue);
           },
-          MaximumLengthValidationRule: function (newValue, threshold) {
-            return "ne peut être plus long que " + threshold + " caractères";
+          EqualityWithOtherLabelValidationRule: function EqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'doit correspondre à ' + Utilities.getValue(threshold.otherValueLabel);
           },
-          MaximumValueValidationRule: function (newValue, threshold) {
-            return "doit être moins que " + threshold;
+          InEqualityWithOtherLabelValidationRule: function InEqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'ne doit pas correspondre à ' + Utilities.getValue(threshold.otherValueLabel);
           },
-          NumericValidationRule: function (newValue, threshold) {
-            return "doit être numérique";
+          InCollectionValidationRule: function InCollectionValidationRule(newValue, threshold) {
+            return 'n\'est pas une valeur valide';
           },
-          RegexValidationRule: function (newValue, threshold) {
-            return "n'est pas une valeur valide";
+          MinimumInclusiveValueValidationRule: function MinimumInclusiveValueValidationRule(newValue, threshold) {
+            return 'doit être ' + Utilities.getValue(threshold) + ' ou plus';
           },
-          StrongPasswordValidationRule: function (newValue, threshold) {
-            if (threshold == 4) return "devrait contenir une combinaison de lettres en miniscule, majuscule, numérique et des caractères spéciaux";else return "devrait contenir au moins " + threshold + " les caractéristiques suivants: lettres minuscule, lettres majuscule, caractères numérique ou scpéciaux";
+          MinimumLengthValidationRule: function MinimumLengthValidationRule(newValue, threshold) {
+            return 'doit contenir au moins ' + Utilities.getValue(threshold) + ' caractères';
+          },
+          MinimumValueValidationRule: function MinimumValueValidationRule(newValue, threshold) {
+            return 'doit être plus que ' + Utilities.getValue(threshold);
+          },
+          MaximumInclusiveValueValidationRule: function MaximumInclusiveValueValidationRule(newValue, threshold) {
+            return 'doit être moins que ' + Utilities.getValue(threshold);
+          },
+          MaximumLengthValidationRule: function MaximumLengthValidationRule(newValue, threshold) {
+            return 'ne doit pas contenir plus de ' + Utilities.getValue(threshold) + ' caractères';
+          },
+          MaximumValueValidationRule: function MaximumValueValidationRule(newValue, threshold) {
+            return 'doit être ' + Utilities.getValue(threshold) + ' ou moins';
+          },
+          NumericValidationRule: function NumericValidationRule(newValue, threshold) {
+            return 'doit être une valeur numérique';
+          },
+          RegexValidationRule: function RegexValidationRule(newValue, threshold) {
+            return 'n\'est pas une valeur valide';
+          },
+          ContainsOnlyValidationRule: function ContainsOnlyValidationRule(newValue, threshold) {
+            return 'n\'est pas une valeur valide';
+          },
+          StrongPasswordValidationRule: function StrongPasswordValidationRule(newValue, threshold) {
+            return 'doit contenir une combinaison de lettres minuscules, de lettres majuscules, de caractères numériques et de caractères spéciaux';
+          },
+          MediumPasswordValidationRule: function MediumPasswordValidationRule(newValue, threshold) {
+            return 'doit contenir au moins ' + Utilities.getValue(threshold) + ' des caractéristiques suivantes : lettres minuscules, lettres majuscules, caractères numériques ou caractères spéciaux';
           }
         }
       };
 
-      _export("data", data);
+      _export('data', data);
     }
   };
 });

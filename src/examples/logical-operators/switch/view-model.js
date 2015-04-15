@@ -9,26 +9,18 @@ export class Person {
     };
     this.validation = validation.on(this)
       .ensure('customer.level')
-        .notEmpty()
-        .in(this.allowedCustomerLevels)
-      .ensure('customer.monthlyIncome')
-        .notEmpty()
-        .isNumeric()
+        .isNotEmpty()
+        .isIn(this.allowedCustomerLevels)
+      .ensure('customer.monthlyIncome', (config) => {config.computedFrom(['customer.level'])})
+        .isNotEmpty()
+        .isNumber()
         .switch(() => { return this.customer.level})
           .case('Gold')
-            .minimum(10000)
+            .isGreaterThan(10000)
           .case('Platinum')
-            .minimum(20000)
+            .isGreaterThan(20000)
           .default()
-            .minimum(5000)
+            .isGreaterThan(5000)
         .endSwitch();
-  }
-
-  welcome(){
-    this.validation.validate().then(
-      () => {
-        alert('Welcome,new customer!');
-      }
-    );
   }
 }

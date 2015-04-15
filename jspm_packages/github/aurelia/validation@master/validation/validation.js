@@ -1,6 +1,6 @@
 /* */ 
-System.register(["aurelia-binding", "../validation/validation-rules", "../validation/validation-rules-collection", "../validation/validation-group", "../validation/validation-locale-repository"], function (_export) {
-  var ObserverLocator, AllRules, AllCollections, ValidationGroup, ValidationLocaleRepository, _createClass, _classCallCheck, Validation;
+System.register(['aurelia-binding', '../validation/validation-rules', '../validation/validation-rules-collection', '../validation/validation-group', 'aurelia-dependency-injection', '../validation/validation-config'], function (_export) {
+  var ObserverLocator, AllRules, AllCollections, ValidationGroup, inject, ValidationConfig, _classCallCheck, _createClass, Validation;
 
   return {
     setters: [function (_aureliaBinding) {
@@ -11,87 +11,45 @@ System.register(["aurelia-binding", "../validation/validation-rules", "../valida
       AllCollections = _validationValidationRulesCollection;
     }, function (_validationValidationGroup) {
       ValidationGroup = _validationValidationGroup.ValidationGroup;
-    }, function (_validationValidationLocaleRepository) {
-      ValidationLocaleRepository = _validationValidationLocaleRepository.ValidationLocaleRepository;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
+    }, function (_validationValidationConfig) {
+      ValidationConfig = _validationValidationConfig.ValidationConfig;
     }],
     execute: function () {
-      "use strict";
+      'use strict';
 
-      _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-      /**
-       * A lightweight validation plugin
-       * @class Validation
-       * @constructor
-       */
-      Validation = _export("Validation", (function () {
-
-        /**
-         * Instantiates a new {Validation}
-         * @param observerLocator the observerLocator used to observer properties
-         */
-
-        function Validation(observerLocator) {
-          _classCallCheck(this, Validation);
+      Validation = (function () {
+        function Validation(observerLocator, validationConfig) {
+          _classCallCheck(this, _Validation);
 
           this.observerLocator = observerLocator;
+          this.config = validationConfig ? validationConfig : Validation.defaults;
         }
 
-        _createClass(Validation, {
-          on: {
-
-            /**
-             * Returns a new validation group on the subject
-             * @param subject The subject to validate
-             * @returns {ValidationGroup} A ValidationGroup that encapsulates the validation rules and current validation state for this subject
-             */
-
-            value: function on(subject) {
-              return new ValidationGroup(subject, this.observerLocator);
+        _createClass(Validation, [{
+          key: 'on',
+          value: function on(subject, configCallback) {
+            var conf = new ValidationConfig(this.config);
+            if (configCallback !== null && configCallback !== undefined && typeof configCallback === 'function') {
+              configCallback(conf);
             }
+            return new ValidationGroup(subject, this.observerLocator, conf);
           }
-        }, {
-          inject: {
-            value: function inject() {
-              return [ObserverLocator];
-            }
-          }
-        });
+        }]);
 
+        var _Validation = Validation;
+        Validation = inject(ObserverLocator)(Validation) || Validation;
         return Validation;
-      })());
+      })();
 
-      Validation.Utilities = {
-        isEmptyValue: function isEmptyValue(val) {
-          if (typeof val === "function") {
-            return this.isEmptyValue(val());
-          }
-          if (val === undefined) {
-            return true;
-          }
-          if (val === null) {
-            return true;
-          }
-          if (val === "") {
-            return true;
-          }
-          if (typeof val === "string") {
-            if (String.prototype.trim) {
-              val = val.trim();
-            } else {
-              val = val.replace(/^\s+|\s+$/g, "");
-            }
-          }
+      _export('Validation', Validation);
 
-          if (val.length !== undefined) {
-            return 0 === val.length;
-          }
-          return false;
-        }
-      };
-      Validation.Locale = new ValidationLocaleRepository();
+      Validation.defaults = new ValidationConfig();
     }
   };
 });

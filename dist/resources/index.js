@@ -1,11 +1,11 @@
-System.register(["./example-context"], function (_export) {
+System.register(['./example-context'], function (_export) {
   var ExampleContext;
 
-  _export("install", install);
+  _export('install', install);
 
   function install(aurelia) {
-    aurelia.container.registerInstance(ExampleContext, new ExampleContext("https://github.com/aurelia/validation/blob/gh-pages"));
-    aurelia.globalizeResources("./markdown", "./source", "./example", "./column", "./file", "./smart-example");
+    aurelia.container.registerInstance(ExampleContext, new ExampleContext('https://github.com/aurelia/validation/blob/gh-pages'));
+    aurelia.globalizeResources('./markdown-custom-element', './source-custom-attribute', './example-custom-element', './column-custom-element', './file-custom-element', './smart-example-custom-element');
   }
 
   return {
@@ -13,8 +13,8 @@ System.register(["./example-context"], function (_export) {
       ExampleContext = _exampleContext.ExampleContext;
     }],
     execute: function () {
-      "use strict";
+      'use strict';
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO01BQVEsY0FBYzs7cUJBR04sT0FBTzs7QUFBaEIsV0FBUyxPQUFPLENBQUMsT0FBTyxFQUFFO0FBQy9CLFdBQU8sQ0FBQyxTQUFTLENBQUMsZ0JBQWdCLENBQ2hDLGNBQWMsRUFDZCxJQUFJLGNBQWMsQ0FBQyxxREFBcUQsQ0FBQyxDQUFDLENBQUM7QUFDN0UsV0FBTyxDQUFDLGtCQUFrQixDQUFDLFlBQVksRUFBRSxVQUFVLEVBQUUsV0FBVyxFQUFFLFVBQVUsRUFBRSxRQUFRLEVBQUUsaUJBQWlCLENBQUMsQ0FBQztHQUM1Rzs7OztBQVJPLG9CQUFjLG1CQUFkLGNBQWMiLCJmaWxlIjoicmVzb3VyY2VzL2luZGV4LmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7cUJBR2dCLE9BQU87O0FBQWhCLFdBQVMsT0FBTyxDQUFDLE9BQU8sRUFBRTtBQUMvQixXQUFPLENBQUMsU0FBUyxDQUFDLGdCQUFnQixDQUNoQyxjQUFjLEVBQ2QsSUFBSSxjQUFjLENBQUMscURBQXFELENBQUMsQ0FBQyxDQUFDO0FBQzdFLFdBQU8sQ0FBQyxrQkFBa0IsQ0FBQywyQkFBMkIsRUFBRSwyQkFBMkIsRUFBRSwwQkFBMEIsRUFBRSx5QkFBeUIsRUFBRSx1QkFBdUIsRUFBRSxnQ0FBZ0MsQ0FBQyxDQUFDO0dBQ3hNOzs7O3VDQVJPLGNBQWMiLCJmaWxlIjoicmVzb3VyY2VzL2luZGV4LmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=

@@ -1,43 +1,44 @@
 System.register([], function (_export) {
-  var _createClass, _classCallCheck, TableOfContents;
+  var _classCallCheck, _createClass, TableOfContents;
 
   return {
     setters: [],
     execute: function () {
       "use strict";
 
-      _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
       _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-      TableOfContents = _export("TableOfContents", (function () {
+      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+      TableOfContents = (function () {
         function TableOfContents() {
           _classCallCheck(this, TableOfContents);
 
-          this.examples = ["Intro", "Validators", "Logical Operators", "Form Submission"]; //TODO can't we just enumerate the examples folder? :(
+          this.examples = ["Intro", "On Validate", "Validators", "Logical Operators", "Form Submission", "I18N"];
         }
 
-        _createClass(TableOfContents, {
-          createRoutes: {
-            value: function createRoutes() {
-              var routes = [];
-              for (var i = 0; i < this.examples.length; i++) {
-                var route = [this.examples[i].toLowerCase().replace(" ", "-")];
-                if (i == 0) route.unshift("");
-                routes.push({ route: route,
-                  moduleId: "./examples/" + this.examples[i].toLowerCase().replace(" ", "-") + "/index",
-                  nav: true,
-                  title: this.examples[i]
-                });
-              }
-              return routes;
+        _createClass(TableOfContents, [{
+          key: "createRoutes",
+          value: function createRoutes() {
+            var routes = [];
+            for (var i = 0; i < this.examples.length; i++) {
+              var route = [this.examples[i].toLowerCase().replace(" ", "-")];
+              if (i == 0) route.unshift("");
+              routes.push({ route: route,
+                moduleId: "./examples/" + this.examples[i].toLowerCase().replace(" ", "-") + "/index",
+                nav: true,
+                title: this.examples[i]
+              });
             }
+            return routes;
           }
-        });
+        }]);
 
         return TableOfContents;
-      })());
+      })();
+
+      _export("TableOfContents", TableOfContents);
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYmxlLW9mLWNvbnRlbnRzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7cUNBQWEsZUFBZTs7Ozs7Ozs7Ozs7QUFBZixxQkFBZTtBQUVmLGlCQUZBLGVBQWUsR0FFYjtnQ0FGRixlQUFlOztBQUd4QixjQUFJLENBQUMsUUFBUSxHQUFHLENBQUMsT0FBTyxFQUFFLFlBQVksRUFBRSxtQkFBbUIsRUFBRSxpQkFBaUIsQ0FBQyxDQUFDO1NBQ2pGOztxQkFKVSxlQUFlO0FBTTFCLHNCQUFZO21CQUFBLHdCQUFFO0FBQ1osa0JBQUksTUFBTSxHQUFHLEVBQUUsQ0FBQztBQUNoQixtQkFBSSxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLElBQUksQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUM1QztBQUNFLG9CQUFJLEtBQUssR0FBRyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBQy9ELG9CQUFHLENBQUMsSUFBSSxDQUFDLEVBQ1AsS0FBSyxDQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUMsQ0FBQztBQUNwQixzQkFBTSxDQUFDLElBQUksQ0FDVCxFQUFFLEtBQUssRUFBRyxLQUFLO0FBQ2IsMEJBQVEsRUFBRyxhQUFhLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxHQUFHLFFBQVE7QUFDdEYscUJBQUcsRUFBRyxJQUFJO0FBQ1YsdUJBQUssRUFBRyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztpQkFDekIsQ0FBQyxDQUFDO2VBQ047QUFDRCxxQkFBTyxNQUFNLENBQUM7YUFDZjs7OztlQXJCVSxlQUFlIiwiZmlsZSI6InRhYmxlLW9mLWNvbnRlbnRzLmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYmxlLW9mLWNvbnRlbnRzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7cUNBQWEsZUFBZTs7Ozs7Ozs7Ozs7QUFBZixxQkFBZTtBQUVmLGlCQUZBLGVBQWUsR0FFYjtnQ0FGRixlQUFlOztBQUd4QixjQUFJLENBQUMsUUFBUSxHQUFHLENBQUMsT0FBTyxFQUFFLGFBQWEsRUFBRSxZQUFZLEVBQUUsbUJBQW1CLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxDQUFDLENBQUM7U0FDeEc7O3FCQUpVLGVBQWU7O2lCQU1kLHdCQUFFO0FBQ1osZ0JBQUksTUFBTSxHQUFHLEVBQUUsQ0FBQztBQUNoQixpQkFBSSxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLElBQUksQ0FBQyxRQUFRLENBQUMsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUM1QztBQUNFLGtCQUFJLEtBQUssR0FBRyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsV0FBVyxFQUFFLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBQy9ELGtCQUFHLENBQUMsSUFBSSxDQUFDLEVBQ1AsS0FBSyxDQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUMsQ0FBQztBQUNwQixvQkFBTSxDQUFDLElBQUksQ0FDVCxFQUFFLEtBQUssRUFBRyxLQUFLO0FBQ2Isd0JBQVEsRUFBRyxhQUFhLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxHQUFHLFFBQVE7QUFDdEYsbUJBQUcsRUFBRyxJQUFJO0FBQ1YscUJBQUssRUFBRyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztlQUN6QixDQUFDLENBQUM7YUFDTjtBQUNELG1CQUFPLE1BQU0sQ0FBQztXQUNmOzs7ZUFyQlUsZUFBZTs7O2lDQUFmLGVBQWUiLCJmaWxlIjoidGFibGUtb2YtY29udGVudHMuanMiLCJzb3VyY2VSb290IjoiL3NyYy8ifQ==

@@ -1,24 +1,28 @@
 <template>
-  <smart-example base="validators/notEmpty" title="notEmpty" >
+  <smart-example base="validators/isNotEmpty" title="isNotEmpty()" >
     The notEmpty rule is always checked first before any other validation rule.  This means that without the notEmpty rule, the .betweenLength(3,30) rule would still consider a value of '' as valid because the field is allowed to be empty.
   </smart-example>
 
-  <smart-example base="validators/between" title="between(minimumValue, maximumValue)" ></smart-example>
-  <smart-example base="validators/betweenLength" title="betweenLength(minimumLength, maximumLength)" ></smart-example>
-  <smart-example base="validators/email" title="email()" ></smart-example>
-  <smart-example base="validators/equals" title="equals(otherValue, otherValueLabel)" ></smart-example>
-  <smart-example base="validators/in" title="in(collection)" ></smart-example>
-  <smart-example base="validators/isAlphanumeric" title="isAlphanumeric()" ></smart-example>
-  <smart-example base="validators/isAlphanumericOrWhitespace" title="isAlphanumericOrWhitespace()" ></smart-example>
-  <smart-example base="validators/isDigit" title="isDigit()" ></smart-example>
-  <smart-example base="validators/isNumeric" title="isNumeric()" ></smart-example>
-  <smart-example base="validators/isStrongPassword" title="isStrongPassword(minimumComplexityLevel)" ></smart-example>
+  <smart-example base="validators/containsOnly" title="containsOnly(regex)"></smart-example>
+  <smart-example base="validators/containsOnlyAlpha" title="containsOnlyAlpha()"></smart-example>
+  <smart-example base="validators/containsOnlyAlphaOrWhitespace" title="containsOnlyAlphaOrWhitespace()"></smart-example>
+  <smart-example base="validators/containsOnlyAlphanumerics" title="containsOnlyAlphanumerics()"></smart-example>
+  <smart-example base="validators/containsOnlyAlphanumericsOrWhitespace" title="containsOnlyAlphanumericsOrWhitespace()"></smart-example>
+  <smart-example base="validators/containsOnlyDigits" title="containsOnlyDigits()"></smart-example>
+  <smart-example base="validators/hasLengthBetween" title="hasLengthBetween(inclusiveMin, inclusiveMax)"></smart-example>
+  <smart-example base="validators/hasMaxLength" title="hasMaxLength(inclusiveMax)"></smart-example>
+  <smart-example base="validators/hasMinLength" title="hasMinLength(inclusiveMin))"></smart-example>
+  <smart-example base="validators/isBetween" title="isBetween(inclusiveMin, inclusiveMax)"></smart-example>
+  <smart-example base="validators/isEmail" title="isEmail()"></smart-example>
+  <smart-example base="validators/isEqualTo" title="isEqualTo()"></smart-example>
+  <smart-example base="validators/isGreaterThan" title="isGreaterThan(min)"></smart-example>
+  <smart-example base="validators/isGreaterThanOrEqualTo" title="isGreaterThanOrEqualTo(min)"></smart-example>
+  <smart-example base="validators/isIn" title="isIn(collection)"></smart-example>
+  <smart-example base="validators/isLessThan" title="isLessThan(max)"></smart-example>
+  <smart-example base="validators/isLessThanOrEqualTo" title="isLessThanOrEqualTo(max)"></smart-example>
+  <smart-example base="validators/isEqualTo" title="isEqualTo(otherValue, otherValueLabel)"></smart-example>
+  <smart-example base="validators/isNumber" title="isNumber()"></smart-example>
+  <smart-example base="validators/isStrongPassword" title="isStrongPassword()"></smart-example>
   <smart-example base="validators/matches" title="matches(regex)" ></smart-example>
-  <smart-example base="validators/matchesRegex" title="matchesRegex(regexString)" ></smart-example>
-  <smart-example base="validators/maximum" title="maximum(maximumValue)" ></smart-example>
-  <smart-example base="validators/maxLength" title="maxLength(maximumLength)" ></smart-example>
-  <smart-example base="validators/minimum" title="minimum(minimumValue)" ></smart-example>
-  <smart-example base="validators/minLength" title="minLength(minimumLength)" ></smart-example>
-  <smart-example base="validators/notEquals" title="notEquals(otherValue, otherValueLabel)" ></smart-example>
   <smart-example base="validators/passes" title="passes(customFunction, threshold)" ></smart-example>
 </template>

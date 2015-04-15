@@ -1,71 +1,99 @@
 /* */ 
-System.register([], function (_export) {
-  var data;
+System.register(['../validation/utilities'], function (_export) {
+  var Utilities, data;
   return {
-    setters: [],
+    setters: [function (_validationUtilities) {
+      Utilities = _validationUtilities.Utilities;
+    }],
     execute: function () {
-      //en-US is loaded by default.
-      //to the rest of the world: I'm so very sorry.
-      "use strict";
+      'use strict';
 
       data = {
         settings: {
           numericRegex: /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/
         },
         messages: {
-          isRequired: "is required",
-          AlphaNumericOrWhitespaceValidationRule: function (newValue, threshold) {
-            return "can contain only alphanumerical characters or spaces";
+          isRequired: 'is required',
+          onValidateCallback: 'not a valid value',
+          AlphaNumericOrWhitespaceValidationRule: function AlphaNumericOrWhitespaceValidationRule(newValue, threshold) {
+            return 'can contain only alphanumerical characters or spaces';
           },
-          AlphaNumericValidationRule: function (newValue, threshold) {
-            return "can contain only alphanumerical characters";
+          AlphaNumericValidationRule: function AlphaNumericValidationRule(newValue, threshold) {
+            return 'can contain only alphanumerical characters';
           },
-          BetweenLengthValidationRule: function (newValue, threshold) {
-            return "needs to be at between " + threshold.minimumLength + " and " + threshold.maximumLength + " characters long";
+          AlphaValidationRule: function AlphaValidationRule(newValue, threshold) {
+            return 'can contain only letters';
           },
-          BetweenValueValidationRule: function (newValue, threshold) {
-            return "needs to be between " + threshold.minimumValue + " and " + threshold.maximumValue;
+          AlphaOrWhitespaceValidationRule: function AlphaOrWhitespaceValidationRule(newValue, threshold) {
+            return 'can contain only letters or spaces';
           },
-          CustomFunctionValidationRule: function (newValue, threshold) {
-            return "not a valid value";
+          BetweenLengthValidationRule: function BetweenLengthValidationRule(newValue, threshold) {
+            return 'needs to be at between ' + Utilities.getValue(threshold.minimumLength) + ' and ' + Utilities.getValue(threshold.maximumLength) + ' characters long';
           },
-          DigitValidationRule: function (newValue, threshold) {
-            return "can contain only digits";
+          BetweenValueValidationRule: function BetweenValueValidationRule(newValue, threshold) {
+            return 'needs to be between ' + Utilities.getValue(threshold.minimumValue) + ' and ' + Utilities.getValue(threshold.maximumValue);
           },
-          EmailValidationRule: function (newValue, threshold) {
-            return "is not a valid email address";
+          CustomFunctionValidationRule: function CustomFunctionValidationRule(newValue, threshold) {
+            return 'not a valid value';
           },
-          EqualityValidationRule: function (newValue, threshold) {
-            if (threshold.otherValueLabel) if (threshold.equality) return "does not match " + threshold.otherValueLabel;else return "cannot not match " + threshold.otherValueLabel;else if (threshold.equality) return "should be " + threshold.otherValue;else return "cannot not be " + threshold.otherValue;
+          DigitValidationRule: function DigitValidationRule(newValue, threshold) {
+            return 'can contain only digits';
           },
-          InCollectionValidationRule: function (newValue, threshold) {
-            return "not a valid value";
+          EmailValidationRule: function EmailValidationRule(newValue, threshold) {
+            return 'is not a valid email address';
           },
-          MinimumLengthValidationRule: function (newValue, threshold) {
-            return "needs to be at least " + threshold + " characters long";
+          EqualityValidationRule: function EqualityValidationRule(newValue, threshold) {
+            return 'should be ' + Utilities.getValue(threshold.otherValue);
           },
-          MinimumValueValidationRule: function (newValue, threshold) {
-            return "needs to be " + threshold + " or more";
+          InEqualityValidationRule: function InEqualityValidationRule(newValue, threshold) {
+            return 'cannot be ' + Utilities.getValue(threshold.otherValue);
           },
-          MaximumLengthValidationRule: function (newValue, threshold) {
-            return "cannot be longer then " + threshold + " characters";
+          EqualityWithOtherLabelValidationRule: function EqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'does not match ' + Utilities.getValue(threshold.otherValueLabel);
           },
-          MaximumValueValidationRule: function (newValue, threshold) {
-            return "needs to be less than " + threshold;
+          InEqualityWithOtherLabelValidationRule: function InEqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'cannot match ' + Utilities.getValue(threshold.otherValueLabel);
           },
-          NumericValidationRule: function (newValue, threshold) {
-            return "needs to be a number";
+          InCollectionValidationRule: function InCollectionValidationRule(newValue, threshold) {
+            return 'not a valid value';
           },
-          RegexValidationRule: function (newValue, threshold) {
-            return "not a valid value";
+          MinimumInclusiveValueValidationRule: function MinimumInclusiveValueValidationRule(newValue, threshold) {
+            return 'needs to be ' + Utilities.getValue(threshold) + ' or more';
           },
-          StrongPasswordValidationRule: function (newValue, threshold) {
-            if (threshold == 4) return "should contain a combination of lowercase letters, uppercase letters, digits and special characters";else return "should contain at least " + threshold + " of the following groups: lowercase letters, uppercase letters, digits or special characters";
+          MinimumLengthValidationRule: function MinimumLengthValidationRule(newValue, threshold) {
+            return 'needs to be at least ' + Utilities.getValue(threshold) + ' characters long';
+          },
+          MinimumValueValidationRule: function MinimumValueValidationRule(newValue, threshold) {
+            return 'needs to be more than ' + Utilities.getValue(threshold);
+          },
+          MaximumInclusiveValueValidationRule: function MaximumInclusiveValueValidationRule(newValue, threshold) {
+            return 'needs to be ' + Utilities.getValue(threshold) + ' or less';
+          },
+          MaximumLengthValidationRule: function MaximumLengthValidationRule(newValue, threshold) {
+            return 'cannot be longer then ' + Utilities.getValue(threshold) + ' characters';
+          },
+          MaximumValueValidationRule: function MaximumValueValidationRule(newValue, threshold) {
+            return 'needs to be less than ' + Utilities.getValue(threshold);
+          },
+          NumericValidationRule: function NumericValidationRule(newValue, threshold) {
+            return 'needs to be a number';
+          },
+          RegexValidationRule: function RegexValidationRule(newValue, threshold) {
+            return 'not a valid value';
+          },
+          ContainsOnlyValidationRule: function ContainsOnlyValidationRule(newValue, threshold) {
+            return 'not a valid value';
+          },
+          StrongPasswordValidationRule: function StrongPasswordValidationRule(newValue, threshold) {
+            return 'should contain a combination of lowercase letters, uppercase letters, digits and special characters';
+          },
+          MediumPasswordValidationRule: function MediumPasswordValidationRule(newValue, threshold) {
+            return 'should contain at least ' + Utilities.getValue(threshold) + ' of the following groups: lowercase letters, uppercase letters, digits or special characters';
           }
         }
       };
 
-      _export("data", data);
+      _export('data', data);
     }
   };
 });

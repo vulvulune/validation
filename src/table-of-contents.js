@@ -1,7 +1,7 @@
 export class TableOfContents{
 
   constructor(){
-    this.examples = ["Intro", "Validators", "Logical Operators", "Form Submission"]; //TODO can't we just enumerate the examples folder? :(
+    this.examples = ["Intro", "On Validate", "Validators", "Logical Operators", "Form Submission", "I18N"]; //TODO can't we just enumerate the examples folder? :(
   }
 
   createRoutes(){

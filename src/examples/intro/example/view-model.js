@@ -5,7 +5,7 @@ export class Person {
     this.firstName = 'John';
     this.validation = validation.on(this)
       .ensure('firstName')
-        .notEmpty()
-        .betweenLength(3,10);
+        .isNotEmpty()
+        .hasLengthBetween(3,10);
   }
 }

@@ -4,6 +4,7 @@
       To prevent form submission when the validation fails, you `could` bind the disabled attribute of the button to the validation's result.
       Because visual clues are only provided once a field is 'dirty', this could lead to a weird user experience.
       Without changing the first-name, the user does not know why this submit button is disabled.
+      Additionally, the validation could still be running (long AJAX call) and the validation result's isValid might not reflect the latest state!
     </markdown>
   </smart-example>
 

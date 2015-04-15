@@ -5,8 +5,8 @@ export class Person {
     this.firstName = 'John';
     this.validation = validation.on(this)
       .ensure('firstName')
-        .notEmpty()
-        .betweenLength(5,10);
+        .isNotEmpty()
+        .hasLengthBetween(5,10);
   }
   welcome(){
       alert(`Welcome ${this.firstName}`);

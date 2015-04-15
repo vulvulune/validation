@@ -1,69 +1,99 @@
 /* */ 
-System.register([], function (_export) {
-  var data;
+System.register(['../validation/utilities'], function (_export) {
+  var Utilities, data;
   return {
-    setters: [],
+    setters: [function (_validationUtilities) {
+      Utilities = _validationUtilities.Utilities;
+    }],
     execute: function () {
-      "use strict";
+      'use strict';
 
       data = {
         settings: {
-          numericRegex: /^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/
+          numericRegex: /^-?(?:\d+)(?:\,\d+)?$/
         },
         messages: {
-          isRequired: "gereklidir",
-          AlphaNumericOrWhitespaceValidationRule: function (newValue, threshold) {
-            return "sadece alfanumerik karakterler veya boşluk girebilirsiniz";
+          isRequired: 'gereklidir',
+          onValidateCallback: 'geçerli bir değer giriniz',
+          AlphaNumericOrWhitespaceValidationRule: function AlphaNumericOrWhitespaceValidationRule(newValue, threshold) {
+            return 'sadece alfanumerik karakterler veya boşluk girebilirsiniz';
           },
-          AlphaNumericValidationRule: function (newValue, threshold) {
-            return "sadece alfanumerik karakterleri girebilirsiniz";
+          AlphaNumericValidationRule: function AlphaNumericValidationRule(newValue, threshold) {
+            return 'sadece alfanumerik karakterleri girebilirsiniz';
           },
-          BetweenLengthValidationRule: function (newValue, threshold) {
-            return "uzunluğu " + threshold.minimumLength + " ile " + threshold.maximumLength + " arasında olmalıdır";
+          AlphaValidationRule: function AlphaValidationRule(newValue, threshold) {
+            return 'sadece harf veya boşluk girebilirsiniz';
           },
-          BetweenValueValidationRule: function (newValue, threshold) {
-            return "" + threshold.minimumValue + " ile " + threshold.maximumValue + " arasında bir değer giriniz";
+          AlphaOrWhitespaceValidationRule: function AlphaOrWhitespaceValidationRule(newValue, threshold) {
+            return 'sadece harf veya boşluk girebilirsiniz';
           },
-          CustomFunctionValidationRule: function (newValue, threshold) {
-            return "geçerli bir değer giriniz";
+          BetweenLengthValidationRule: function BetweenLengthValidationRule(newValue, threshold) {
+            return 'uzunluğu ' + Utilities.getValue(threshold.minimumLength) + ' ile ' + Utilities.getValue(threshold.maximumLength) + ' arasında olmalıdır';
           },
-          DigitValidationRule: function (newValue, threshold) {
-            return "sadece rakam girebilirsiniz";
+          BetweenValueValidationRule: function BetweenValueValidationRule(newValue, threshold) {
+            return '' + Utilities.getValue(threshold.minimumValue) + ' ile ' + Utilities.getValue(threshold.maximumValue) + ' arasında bir değer giriniz';
           },
-          EmailValidationRule: function (newValue, threshold) {
-            return "geçerli bir e-posta giriniz";
+          CustomFunctionValidationRule: function CustomFunctionValidationRule(newValue, threshold) {
+            return 'geçerli bir değer giriniz';
           },
-          EqualityValidationRule: function (newValue, threshold) {
-            if (threshold.otherValueLabel) if (threshold.equality) return "değer " + threshold.otherValueLabel + "''e eşit olmalıdır";else return "değer " + threshold.otherValueLabel + "''den farklı olmalıdır";else if (threshold.equality) return "değer " + threshold.otherValue + "''e eşit olmalıdır";else return "değer " + threshold.otherValue + "''den farklı olmalıdır";
+          DigitValidationRule: function DigitValidationRule(newValue, threshold) {
+            return 'sadece rakam girebilirsiniz';
           },
-          InCollectionValidationRule: function (newValue, threshold) {
-            return "geçersiz değer";
+          EmailValidationRule: function EmailValidationRule(newValue, threshold) {
+            return 'geçerli bir e-posta giriniz';
           },
-          MinimumLengthValidationRule: function (newValue, threshold) {
-            return "değer en az " + threshold + " karakter uzunluğunda olmalıdır";
+          EqualityValidationRule: function EqualityValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold.otherValue) + '\'\'e eşit olmalıdır';
           },
-          MinimumValueValidationRule: function (newValue, threshold) {
-            return "değer " + threshold + " veya daha fazla olmalıdır";
+          InEqualityValidationRule: function InEqualityValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold.otherValue) + '\'\'den farklı olmalıdır';
           },
-          MaximumLengthValidationRule: function (newValue, threshold) {
-            return "değer " + threshold + " karakterden uzun olmamalıdır";
+          EqualityWithOtherLabelValidationRule: function EqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold.otherValueLabel) + '\'\'e eşit olmalıdır';
           },
-          MaximumValueValidationRule: function (newValue, threshold) {
-            return "değer " + threshold + "''dan az olmalı";
+          InEqualityWithOtherLabelValidationRule: function InEqualityWithOtherLabelValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold.otherValueLabel) + '\'\'den farklı olmalıdır';
           },
-          NumericValidationRule: function (newValue, threshold) {
-            return "sadece sayı girebilirsiniz";
+          InCollectionValidationRule: function InCollectionValidationRule(newValue, threshold) {
+            return 'geçersiz değer';
           },
-          RegexValidationRule: function (newValue, threshold) {
-            return "geçerli bir değer giriniz";
+          MinimumInclusiveValueValidationRule: function MinimumInclusiveValueValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold) + ' veya daha fazla olmalıdır';
           },
-          StrongPasswordValidationRule: function (newValue, threshold) {
-            if (threshold == 4) return "küçük harfler, büyük harfler, sayılar ve işaretlerin birleşimi olmalıdır";else return "küçük harfler, büyük harfler, sayılar veya işaretlerden en az " + threshold + " değişik tip olmalı";
+          MinimumLengthValidationRule: function MinimumLengthValidationRule(newValue, threshold) {
+            return 'değer en az ' + Utilities.getValue(threshold) + ' karakter uzunluğunda olmalıdır';
+          },
+          MinimumValueValidationRule: function MinimumValueValidationRule(newValue, threshold) {
+            return 'daha fazla olmalıdır ' + Utilities.getValue(threshold);
+          },
+          MaximumInclusiveValueValidationRule: function MaximumInclusiveValueValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold) + '\'\'dan az olmalı';
+          },
+          MaximumLengthValidationRule: function MaximumLengthValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold) + ' karakterden uzun olmamalıdır';
+          },
+          MaximumValueValidationRule: function MaximumValueValidationRule(newValue, threshold) {
+            return 'değer ' + Utilities.getValue(threshold) + '\'\'dan az olmalı';
+          },
+          NumericValidationRule: function NumericValidationRule(newValue, threshold) {
+            return 'sadece sayı girebilirsiniz';
+          },
+          RegexValidationRule: function RegexValidationRule(newValue, threshold) {
+            return 'geçerli bir değer giriniz';
+          },
+          ContainsOnlyValidationRule: function ContainsOnlyValidationRule(newValue, threshold) {
+            return 'geçerli bir değer giriniz';
+          },
+          StrongPasswordValidationRule: function StrongPasswordValidationRule(newValue, threshold) {
+            return 'küçük harfler, büyük harfler, sayılar ve işaretlerin birleşimi olmalıdır';
+          },
+          MediumPasswordValidationRule: function MediumPasswordValidationRule(newValue, threshold) {
+            return 'küçük harfler, büyük harfler, sayılar veya işaretlerden en az ' + Utilities.getValue(threshold) + ' değişik tip olmalı';
           }
         }
       };
 
-      _export("data", data);
+      _export('data', data);
     }
   };
 });
