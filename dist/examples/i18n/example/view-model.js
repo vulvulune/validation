@@ -20,7 +20,7 @@ System.register(['aurelia-validation'], function (_export) {
           _classCallCheck(this, Person);
 
           this.globalValidationConfig = validationConfig;
-          this.supportedLocales = ['de-DE', 'en-US', 'es-MX', 'fr-FR', 'nl-BE', 'nl-NL', 'sv-SV', 'tr-TR'];
+          this.supportedLocales = ['de-DE', 'en-US', 'es-MX', 'fr-FR', 'nl-BE', 'nl-NL', 'sv-SE', 'tr-TR'];
           this.firstName = 'John';
           this.income = '56,300.00';
 
