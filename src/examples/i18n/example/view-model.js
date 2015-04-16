@@ -5,7 +5,7 @@ export class Person {
   static inject() { return [Validation, ValidationConfig];}
   constructor(validation, validationConfig) {
     this.globalValidationConfig = validationConfig;
-    this.supportedLocales = ['de-DE', 'en-US', 'fr-FR', 'nl-BE', 'nl-NL', 'sv-SV', 'tr-TR'];
+    this.supportedLocales = ['de-DE', 'en-US', 'es-MX', 'fr-FR', 'nl-BE', 'nl-NL', 'sv-SV', 'tr-TR'];
     this.firstName = 'John';
     this.income = '56,300.00';
 
