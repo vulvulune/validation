@@ -24,11 +24,14 @@ export class Person {
       },(onValidateError)=>{ alert('Please try again later')});
   }
   welcome(){
-    debugger;
     this.validation.validate().then(
       () => {
         alert(`Welcome ${this.firstName}`);
       }
     );
+  }
+  resetValidation()
+  {
+    this.validation.result.clear();
   }
 }

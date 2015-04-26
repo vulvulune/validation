@@ -31,7 +31,9 @@ System.register(['aurelia-binding', '../validation/validation-rules', '../valida
           this.config = validationConfig ? validationConfig : Validation.defaults;
         }
 
-        _createClass(Validation, [{
+        var _Validation = Validation;
+
+        _createClass(_Validation, [{
           key: 'on',
           value: function on(subject, configCallback) {
             var conf = new ValidationConfig(this.config);
@@ -42,7 +44,6 @@ System.register(['aurelia-binding', '../validation/validation-rules', '../valida
           }
         }]);
 
-        var _Validation = Validation;
         Validation = inject(ObserverLocator)(Validation) || Validation;
         return Validation;
       })();
