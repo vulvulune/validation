@@ -31,9 +31,7 @@ System.register(['aurelia-binding', '../validation/validation-rules', '../valida
           this.config = validationConfig ? validationConfig : Validation.defaults;
         }
 
-        var _Validation = Validation;
-
-        _createClass(_Validation, [{
+        _createClass(Validation, [{
           key: 'on',
           value: function on(subject, configCallback) {
             var conf = new ValidationConfig(this.config);
@@ -42,8 +40,16 @@ System.register(['aurelia-binding', '../validation/validation-rules', '../valida
             }
             return new ValidationGroup(subject, this.observerLocator, conf);
           }
+        }, {
+          key: 'onBreezeEntity',
+          value: function onBreezeEntity(breezeEntity, configCallback) {
+            var validation = this.on(breezeEntity, configCallback);
+            validation.onBreezeEntity();
+            return validation;
+          }
         }]);
 
+        var _Validation = Validation;
         Validation = inject(ObserverLocator)(Validation) || Validation;
         return Validation;
       })();

@@ -28,10 +28,11 @@ System.register(['../validation/validation-group-builder', '../validation/valida
           this.validationProperties = [];
           this.config = config;
           this.builder = new ValidationGroupBuilder(observerLocator, this);
-          this.onValidateCallback = null;
+          this.onValidateCallbacks = [];
+          this.onPropertyValidationCallbacks = [];
           this.isValidating = false;
           this.onDestroy = config.onLocaleChanged(function () {
-            _this.validate(false);
+            _this.validate(false, true);
           });
         }
 
@@ -41,19 +42,67 @@ System.register(['../validation/validation-group-builder', '../validation/valida
             this.onDestroy();
           }
         }, {
-          key: 'validate',
-          value: function validate() {
+          key: 'clear',
+          value: function clear() {
+            this.validationProperties.forEach(function (prop) {
+              prop.clear();
+            });
+            this.result.clear();
+          }
+        }, {
+          key: 'onBreezeEntity',
+          value: function onBreezeEntity() {
             var _this2 = this;
 
+            var breezeEntity = this.subject;
+            var me = this;
+            this.onPropertyValidate(function (propertyBindingPath) {
+              _this2.passes(function () {
+                breezeEntity.entityAspect.validateProperty(propertyBindingPath);
+                var errors = breezeEntity.entityAspect.getValidationErrors(propertyBindingPath);
+                if (errors.length === 0) return true;else return errors[0].errorMessage;
+              });
+            });
+            this.onValidate(function () {
+              breezeEntity.entityAspect.validateEntity();
+              return {};
+            });
+
+            breezeEntity.entityAspect.validationErrorsChanged.subscribe(function () {
+              breezeEntity.entityAspect.getValidationErrors().forEach(function (validationError) {
+                var propertyName = validationError.propertyName;
+                if (!me.result.properties[propertyName]) {
+                  me.ensure(propertyName);
+                }
+
+                var currentResultProp = me.result.addProperty(propertyName);
+                if (currentResultProp.isValid) {
+
+                  currentResultProp.setValidity({
+                    isValid: false,
+                    message: validationError.errorMessage,
+                    failingRule: 'breeze',
+                    latestValue: currentResultProp.latestValue
+                  }, true);
+                }
+              });
+            });
+          }
+        }, {
+          key: 'validate',
+          value: function validate() {
+            var _this3 = this;
+
             var forceDirty = arguments[0] === undefined ? true : arguments[0];
+            var forceExecution = arguments[1] === undefined ? true : arguments[1];
 
             this.isValidating = true;
             var promise = Promise.resolve(true);
 
             var _loop = function (i) {
-              var validatorProperty = _this2.validationProperties[i];
+              var validatorProperty = _this3.validationProperties[i];
               promise = promise.then(function () {
-                return validatorProperty.validateCurrentValue(forceDirty);
+                return validatorProperty.validateCurrentValue(forceDirty, forceExecution);
               });
             };
 
@@ -65,23 +114,23 @@ System.register(['../validation/validation-group-builder', '../validation/valida
               debugger;
               throw Error('Should never get here: a validation property should always resolve to true/false!');
             });
-            if (this.onValidateCallback) {
+
+            this.onValidateCallbacks.forEach(function (onValidateCallback) {
               promise = promise.then(function () {
-                return _this2.config.locale();
+                return _this3.config.locale();
               }).then(function (locale) {
-                return Promise.resolve(_this2.onValidateCallback.validationFunction()).then(function (callbackResult) {
+                return Promise.resolve(onValidateCallback.validationFunction()).then(function (callbackResult) {
                   for (var prop in callbackResult) {
-                    if (!_this2.result.properties[prop]) {
-                      _this2.ensure(prop);
+                    if (!_this3.result.properties[prop]) {
+                      _this3.ensure(prop);
                     }
-                    var resultProp = _this2.result.addProperty(prop);
+                    var resultProp = _this3.result.addProperty(prop);
                     var result = callbackResult[prop];
                     var newPropResult = {
                       latestValue: resultProp.latestValue
                     };
-
                     if (result === true || result === null || result === '') {
-                      if (!resultProp.isValid) {
+                      if (!resultProp.isValid && resultProp.failingRule === 'onValidateCallback') {
                         newPropResult.failingRule = null;
                         newPropResult.message = '';
                         newPropResult.isValid = true;
@@ -100,21 +149,22 @@ System.register(['../validation/validation-group-builder', '../validation/valida
                       }
                     }
                   }
-                  _this2.result.checkValidity();
+                  _this3.result.checkValidity();
                 }, function (a, b, c, d, e) {
-                  _this2.result.isValid = false;
-                  if (_this2.onValidateCallback.validationFunctionFailedCallback) {
-                    _this2.onValidateCallback.validationFunctionFailedCallback(a, b, c, d, e);
+                  debugger;
+                  _this3.result.isValid = false;
+                  if (onValidateCallback.validationFunctionFailedCallback) {
+                    onValidateCallback.validationFunctionFailedCallback(a, b, c, d, e);
                   }
                 });
               });
-            }
+            });
             promise = promise.then(function () {
-              _this2.isValidating = false;
-              if (_this2.result.isValid) {
-                return Promise.resolve(_this2.result);
+              _this3.isValidating = false;
+              if (_this3.result.isValid) {
+                return Promise.resolve(_this3.result);
               } else {
-                return Promise.reject(_this2.result);
+                return Promise.reject(_this3.result);
               }
             });
             return promise;
@@ -122,13 +172,23 @@ System.register(['../validation/validation-group-builder', '../validation/valida
         }, {
           key: 'onValidate',
           value: function onValidate(validationFunction, validationFunctionFailedCallback) {
-            this.onValidateCallback = { validationFunction: validationFunction, validationFunctionFailedCallback: validationFunctionFailedCallback };
+            this.onValidateCallbacks.push({ validationFunction: validationFunction, validationFunctionFailedCallback: validationFunctionFailedCallback });
+            return this;
+          }
+        }, {
+          key: 'onPropertyValidate',
+          value: function onPropertyValidate(validationFunction) {
+            this.onPropertyValidationCallbacks.push(validationFunction);
             return this;
           }
         }, {
           key: 'ensure',
           value: function ensure(bindingPath, configCallback) {
-            return this.builder.ensure(bindingPath, configCallback);
+            this.builder.ensure(bindingPath, configCallback);
+            this.onPropertyValidationCallbacks.forEach(function (callback) {
+              callback(bindingPath);
+            });
+            return this;
           }
         }, {
           key: 'isNotEmpty',

@@ -32,6 +32,8 @@ export class Person {
   }
   resetValidation()
   {
-    this.validation.result.clear();
+    this.firstName = 'John';
+    this.lastName = 'Doe';
+    this.validation.clear();
   }
 }
