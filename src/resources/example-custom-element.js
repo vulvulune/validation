@@ -9,11 +9,16 @@ export class Example {
     this.context = context;
     this.model = null;
     this.view = null;
-    this.result = false;
+    this.hasResult = false;
   }
 
   baseChanged(newValue) {
     this.context.base = newValue;
     this.context.example = this;
+  }
+  complete(shouldComplete)
+  {
+    debugger;
+    this.result = shouldComplete;
   }
 }

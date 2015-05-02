@@ -4,17 +4,22 @@ import {ExampleContext} from './example-context';
 
 @inject(ExampleContext)
 export class SmartExampleCustomElement {
-  @bindable title = 'An excample...';
-  @bindable base = null;
-  @bindable model = null;
-  @bindable view = null;
-  @bindable result = false;
-
+  @bindable title;
+  @bindable model;
+  @bindable view;
+  @bindable base;
 
   constructor(context) {
     this.context = context;
+    this.base = null;
+    this.model = null;
+    this.view = null;
+    this.title  = 'An excample...';
+    this.hasResult = false;
   }
-  titleChanged(newValue){ }
+  titleChanged(newValue){
+    debugger;
+  }
 
   baseChanged(newValue) {
     this.context.base = 'examples/' + newValue;
@@ -22,5 +27,9 @@ export class SmartExampleCustomElement {
   }
   attached(){
     this.baseChanged(this.base);
+  }
+  complete()
+  {
+    this.hasResult = true;
   }
 }

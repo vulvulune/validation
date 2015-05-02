@@ -44,6 +44,7 @@ export class FileCustomElement {
     if (this.model === 'true')
       example.model = this.info;
 
-    example.result = example.view && example.model;
+    if((example.view && example.model))
+      example.complete();
   }
 }

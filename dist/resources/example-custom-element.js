@@ -1,5 +1,5 @@
 System.register(['aurelia-framework', './example-context'], function (_export) {
-  var inject, bindable, ExampleContext, _classCallCheck, _createDecoratedClass, Example;
+  var inject, bindable, ExampleContext, _classCallCheck, _createDecoratedClass, _defineDecoratedPropertyDescriptor, Example;
 
   return {
     setters: [function (_aureliaFramework) {
@@ -13,7 +13,9 @@ System.register(['aurelia-framework', './example-context'], function (_export) {
 
       _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-      _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (initializers) initializers[key] = descriptor.initializer; } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+      _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+
+      _defineDecoratedPropertyDescriptor = function (target, key, descriptors) { var _descriptor = descriptors[key]; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer(); Object.defineProperty(target, key, descriptor); };
 
       Example = (function () {
         var _instanceInitializers = {};
@@ -21,12 +23,12 @@ System.register(['aurelia-framework', './example-context'], function (_export) {
         function Example(context) {
           _classCallCheck(this, _Example);
 
-          this.base = _instanceInitializers.base.call(this);
+          _defineDecoratedPropertyDescriptor(this, 'base', _instanceInitializers);
 
           this.context = context;
           this.model = null;
           this.view = null;
-          this.result = false;
+          this.hasResult = false;
         }
 
         var _Example = Example;
@@ -44,6 +46,12 @@ System.register(['aurelia-framework', './example-context'], function (_export) {
             this.context.base = newValue;
             this.context.example = this;
           }
+        }, {
+          key: 'complete',
+          value: function complete(shouldComplete) {
+            debugger;
+            this.result = shouldComplete;
+          }
         }], null, _instanceInitializers);
 
         Example = inject(ExampleContext)(Example) || Example;
@@ -54,4 +62,4 @@ System.register(['aurelia-framework', './example-context'], function (_export) {
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9leGFtcGxlLWN1c3RvbS1lbGVtZW50LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Z0ZBS2EsT0FBTzs7OztpQ0FMWixNQUFNO21DQUNOLFFBQVE7O3VDQUNSLGNBQWM7Ozs7Ozs7OztBQUdULGFBQU87OztBQUVQLGlCQUZBLE9BQU8sQ0FFTixPQUFPLEVBQUU7OztlQURYLElBQUkseUJBQUosSUFBSTs7QUFFWixjQUFJLENBQUMsT0FBTyxHQUFHLE9BQU8sQ0FBQztBQUN2QixjQUFJLENBQUMsS0FBSyxHQUFHLElBQUksQ0FBQztBQUNsQixjQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztBQUNqQixjQUFJLENBQUMsTUFBTSxHQUFHLEtBQUssQ0FBQztTQUNyQjs7dUJBUFUsT0FBTzs7Ozt1QkFDakIsUUFBUTs7bUJBQVEsRUFBRTs7Ozs7aUJBUVIscUJBQUMsUUFBUSxFQUFFO0FBQ3BCLGdCQUFJLENBQUMsT0FBTyxDQUFDLElBQUksR0FBRyxRQUFRLENBQUM7QUFDN0IsZ0JBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQztXQUM3Qjs7O0FBWlUsZUFBTyxHQURuQixNQUFNLENBQUMsY0FBYyxDQUFDLENBQ1YsT0FBTyxLQUFQLE9BQU87ZUFBUCxPQUFPOzs7eUJBQVAsT0FBTyIsImZpbGUiOiJyZXNvdXJjZXMvZXhhbXBsZS1jdXN0b20tZWxlbWVudC5qcyIsInNvdXJjZVJvb3QiOiIvc3JjLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9leGFtcGxlLWN1c3RvbS1lbGVtZW50LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7b0hBS2EsT0FBTzs7OztpQ0FMWixNQUFNO21DQUNOLFFBQVE7O3VDQUNSLGNBQWM7Ozs7Ozs7Ozs7O0FBR1QsYUFBTzs7O0FBRVAsaUJBRkEsT0FBTyxDQUVOLE9BQU8sRUFBRTs7Ozs7QUFDbkIsY0FBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUM7QUFDdkIsY0FBSSxDQUFDLEtBQUssR0FBRyxJQUFJLENBQUM7QUFDbEIsY0FBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7QUFDakIsY0FBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7U0FDeEI7O3VCQVBVLE9BQU87Ozs7dUJBQ2pCLFFBQVE7O21CQUFRLEVBQUU7Ozs7O2lCQVFSLHFCQUFDLFFBQVEsRUFBRTtBQUNwQixnQkFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLEdBQUcsUUFBUSxDQUFDO0FBQzdCLGdCQUFJLENBQUMsT0FBTyxDQUFDLE9BQU8sR0FBRyxJQUFJLENBQUM7V0FDN0I7OztpQkFDTyxrQkFBQyxjQUFjLEVBQ3ZCO0FBQ0UscUJBQVM7QUFDVCxnQkFBSSxDQUFDLE1BQU0sR0FBRyxjQUFjLENBQUM7V0FDOUI7OztBQWpCVSxlQUFPLEdBRG5CLE1BQU0sQ0FBQyxjQUFjLENBQUMsQ0FDVixPQUFPLEtBQVAsT0FBTztlQUFQLE9BQU87Ozt5QkFBUCxPQUFPIiwiZmlsZSI6InJlc291cmNlcy9leGFtcGxlLWN1c3RvbS1lbGVtZW50LmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=
