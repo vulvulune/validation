@@ -74,7 +74,7 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
     "aurelia-html-template-element": "github:aurelia/html-template-element@^0.2.0",
     "aurelia-path": "github:aurelia/path@^0.6.0",

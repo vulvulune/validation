@@ -10,7 +10,7 @@ System.register(['./validation/validation-config', './validation/validation', '.
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(Validation.defaults);
     }
-    aurelia.container.registerInstance(ValidationConfig, Validation.defaults);
+    aurelia.withSingleton(ValidationConfig, Validation.defaults);
     return Validation.defaults.locale();
   }
 
@@ -39,6 +39,8 @@ System.register(['./validation/validation-config', './validation/validation', '.
       _export('ValidateCustomAttribute', _validationValidateCustomAttribute.ValidateCustomAttribute);
     }, function (_validationValidateCustomAttributeViewStrategy) {
       _export('ValidateCustomAttributeViewStrategy', _validationValidateCustomAttributeViewStrategy.ValidateCustomAttributeViewStrategy);
+
+      _export('ValidateCustomAttributeViewStrategyBase', _validationValidateCustomAttributeViewStrategy.ValidateCustomAttributeViewStrategyBase);
     }, function (_validationDecorators) {
       _export('ensure', _validationDecorators.ensure);
     }],

@@ -70,7 +70,7 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
     "aurelia-history": "github:aurelia/history@^0.4.0",
     "core-js": "npm:core-js@^0.9.5"

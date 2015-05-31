@@ -20,7 +20,6 @@
     "email": "shtylman@gmail.com"
   },
   "license": "MIT",
-  "readme": "events-browserify\n\nnode.js events module cleaned up for use by script or browserify\n\n## credits\nOriginal code from the node.js project with browserify modifications\n\n",
   "_id": "events-browserify@0.0.1",
   "dist": {
     "shasum": "60ab35ca33f437a6e43d834f939b859b6c0d7860",
@@ -38,12 +37,11 @@
     }
   ],
   "deprecated": "use events module instead (also on npm)",
-  "jspm": {},
-  "registry": "npm",
   "format": "cjs",
   "ignore": [
     "node_modules"
   ],
+  "registry": "npm",
   "dependencies": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
   }

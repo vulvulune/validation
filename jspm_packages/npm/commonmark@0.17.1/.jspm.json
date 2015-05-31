@@ -49,12 +49,11 @@
     "shasum": "faa3ffdce05fc35884feafa0aa0efe1be31234b1",
     "tarball": "http://registry.npmjs.org/commonmark/-/commonmark-0.17.1.tgz"
   },
-  "jspm": {},
-  "registry": "npm",
   "format": "cjs",
   "ignore": [
     "node_modules"
   ],
+  "registry": "npm",
   "dependencies": {
     "fs": "github:jspm/nodelibs-fs@^0.1.0",
     "process": "github:jspm/nodelibs-process@^0.1.0",

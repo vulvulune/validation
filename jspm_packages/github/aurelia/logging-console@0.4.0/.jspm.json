@@ -76,5 +76,6 @@
   "format": "register",
   "directories": {
     "lib": "dist/system"
-  }
+  },
+  "registry": "github"
 }

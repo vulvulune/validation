@@ -78,7 +78,7 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
     "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.4.0",
     "aurelia-framework": "github:aurelia/framework@^0.11.0",

@@ -72,7 +72,7 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
     "aurelia-binding": "github:aurelia/binding@^0.6.0",
     "aurelia-logging": "github:aurelia/logging@^0.4.0",

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-validation",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A validation plugin for Aurelia.",
   "keywords": [
     "aurelia",
@@ -25,9 +25,9 @@
       "lib": "dist/system"
     },
     "dependencies": {
-      "aurelia-binding": "github:aurelia/binding@^0.6.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.0",
-      "aurelia-templating": "github:aurelia/templating@^0.11.0"
+      "aurelia-binding": "github:aurelia/binding@^0.6.1",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.1",
+      "aurelia-templating": "github:aurelia/templating@^0.11.2"
     }
   },
   "devDependencies": {
@@ -81,10 +81,10 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
-    "aurelia-binding": "github:aurelia/binding@^0.6.0",
-    "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.0",
-    "aurelia-templating": "github:aurelia/templating@^0.11.0"
+    "aurelia-binding": "github:aurelia/binding@^0.6.1",
+    "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.1",
+    "aurelia-templating": "github:aurelia/templating@^0.11.2"
   }
 }

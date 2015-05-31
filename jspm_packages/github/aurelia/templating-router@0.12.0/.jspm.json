@@ -73,7 +73,7 @@
   "directories": {
     "lib": "dist/system"
   },
-  "registry": "jspm",
+  "registry": "github",
   "dependencies": {
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.7.0",
     "aurelia-metadata": "github:aurelia/metadata@^0.5.0",
