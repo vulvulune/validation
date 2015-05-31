@@ -1,5 +1,11 @@
 System.register(['aurelia-validation'], function (_export) {
-  var Validation, ValidationConfig, _classCallCheck, _createClass, Person;
+  'use strict';
+
+  var Validation, ValidationConfig, Person;
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
     setters: [function (_aureliaValidation) {
@@ -7,12 +13,6 @@ System.register(['aurelia-validation'], function (_export) {
       ValidationConfig = _aureliaValidation.ValidationConfig;
     }],
     execute: function () {
-      'use strict';
-
-      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
       Person = (function () {
         function Person(validation, validationConfig) {
           var _this = this;
@@ -53,4 +53,4 @@ System.register(['aurelia-validation'], function (_export) {
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImV4YW1wbGVzL2kxOG4vZXhhbXBsZS92aWV3LW1vZGVsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7bUVBR2EsTUFBTTs7OztzQ0FIWCxVQUFVOzRDQUNWLGdCQUFnQjs7Ozs7Ozs7O0FBRVgsWUFBTTtBQUVOLGlCQUZBLE1BQU0sQ0FFTCxVQUFVLEVBQUUsZ0JBQWdCLEVBQUU7OztnQ0FGL0IsTUFBTTs7QUFHZixjQUFJLENBQUMsc0JBQXNCLEdBQUcsZ0JBQWdCLENBQUM7QUFDL0MsY0FBSSxDQUFDLGdCQUFnQixHQUFHLENBQUMsT0FBTyxFQUFFLE9BQU8sRUFBRSxPQUFPLEVBQUUsT0FBTyxFQUFFLE9BQU8sRUFBRSxPQUFPLEVBQUUsT0FBTyxFQUFFLE9BQU8sQ0FBQyxDQUFDO0FBQ2pHLGNBQUksQ0FBQyxTQUFTLEdBQUcsTUFBTSxDQUFDO0FBQ3hCLGNBQUksQ0FBQyxNQUFNLEdBQUcsV0FBVyxDQUFDOztBQUUxQixjQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsQ0FBQyxFQUFFLENBQUMsSUFBSSxDQUFDLENBQ2xDLE1BQU0sQ0FBQyxXQUFXLENBQUMsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDLEVBQUUsRUFBRSxDQUFDLENBQ3hELE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxRQUFRLEVBQUUsQ0FBQzs7QUFFNUMsb0JBQVUsQ0FBRSxZQUFNO0FBQUUsa0JBQUssVUFBVSxDQUFDLFFBQVEsRUFBRSxDQUFDO1dBQUUsRUFBQyxJQUFJLENBQUMsQ0FBQztTQUV6RDs7cUJBZFUsTUFBTTs7ZUFnQkEsWUFBRTtBQUNqQixtQkFBTyxJQUFJLENBQUMsc0JBQXNCLENBQUMsUUFBUSxDQUFDLFFBQVEsQ0FBQyxDQUFDO1dBQ3ZEO2VBQ2dCLFVBQUMsS0FBSyxFQUFDO0FBQ3RCLGdCQUFJLENBQUMsc0JBQXNCLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1dBQzlDOzs7aUJBcEJZLGtCQUFHO0FBQUUsbUJBQU8sQ0FBQyxVQUFVLEVBQUUsZ0JBQWdCLENBQUMsQ0FBQztXQUFDOzs7ZUFEOUMsTUFBTTs7O3dCQUFOLE1BQU0iLCJmaWxlIjoiZXhhbXBsZXMvaTE4bi9leGFtcGxlL3ZpZXctbW9kZWwuanMiLCJzb3VyY2VSb290IjoiL3NyYy8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImV4YW1wbGVzL2kxOG4vZXhhbXBsZS92aWV3LW1vZGVsLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztvQ0FHYSxNQUFNOzs7Ozs7OztzQ0FIWCxVQUFVOzRDQUNWLGdCQUFnQjs7O0FBRVgsWUFBTTtBQUVOLGlCQUZBLE1BQU0sQ0FFTCxVQUFVLEVBQUUsZ0JBQWdCLEVBQUU7OztnQ0FGL0IsTUFBTTs7QUFHZixjQUFJLENBQUMsc0JBQXNCLEdBQUcsZ0JBQWdCLENBQUM7QUFDL0MsY0FBSSxDQUFDLGdCQUFnQixHQUFHLENBQUMsT0FBTyxFQUFFLE9BQU8sRUFBRSxPQUFPLEVBQUUsT0FBTyxFQUFFLE9BQU8sRUFBRSxPQUFPLEVBQUUsT0FBTyxFQUFFLE9BQU8sQ0FBQyxDQUFDO0FBQ2pHLGNBQUksQ0FBQyxTQUFTLEdBQUcsTUFBTSxDQUFDO0FBQ3hCLGNBQUksQ0FBQyxNQUFNLEdBQUcsV0FBVyxDQUFDOztBQUUxQixjQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsQ0FBQyxFQUFFLENBQUMsSUFBSSxDQUFDLENBQ2xDLE1BQU0sQ0FBQyxXQUFXLENBQUMsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDLEVBQUUsRUFBRSxDQUFDLENBQ3hELE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxRQUFRLEVBQUUsQ0FBQzs7QUFFNUMsb0JBQVUsQ0FBRSxZQUFNO0FBQUUsa0JBQUssVUFBVSxDQUFDLFFBQVEsRUFBRSxDQUFDO1dBQUUsRUFBQyxJQUFJLENBQUMsQ0FBQztTQUV6RDs7cUJBZFUsTUFBTTs7ZUFnQkEsWUFBRTtBQUNqQixtQkFBTyxJQUFJLENBQUMsc0JBQXNCLENBQUMsUUFBUSxDQUFDLFFBQVEsQ0FBQyxDQUFDO1dBQ3ZEO2VBQ2dCLFVBQUMsS0FBSyxFQUFDO0FBQ3RCLGdCQUFJLENBQUMsc0JBQXNCLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1dBQzlDOzs7aUJBcEJZLGtCQUFHO0FBQUUsbUJBQU8sQ0FBQyxVQUFVLEVBQUUsZ0JBQWdCLENBQUMsQ0FBQztXQUFDOzs7ZUFEOUMsTUFBTTs7O3dCQUFOLE1BQU0iLCJmaWxlIjoiZXhhbXBsZXMvaTE4bi9leGFtcGxlL3ZpZXctbW9kZWwuanMiLCJzb3VyY2VSb290IjoiLi4vc3JjLyJ9

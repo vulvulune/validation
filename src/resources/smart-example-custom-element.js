@@ -18,7 +18,6 @@ export class SmartExampleCustomElement {
     this.hasResult = false;
   }
   titleChanged(newValue){
-    debugger;
   }
 
   baseChanged(newValue) {
